@@ -1,0 +1,54 @@
+<div class="container">
+  <mat-form-field appearance="fill">
+    <mat-label>Sort by:</mat-label>
+    <mat-select
+      [(ngModel)]="selectedSort"
+      (selectionChange)="onSortChange($event.value)"
+    >
+      <mat-option value="none">None</mat-option>
+      <mat-option value="downloadSpeed">Download Speed</mat-option>
+      <mat-option value="uploadSpeed">Upload Speed</mat-option>
+      <mat-option value="price">Price</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="tariff-list" *ngIf="tariffs.length > 0">
+    <div class="tariff-row" *ngFor="let tariff of tariffs">
+      <div class="tariff-col" mat-col-md="1">
+        <span class="serial-no">{{ tariffs.indexOf(tariff) + 1 }}</span>
+      </div>
+      <div class="tariff-col" mat-col-md="2">
+        <span class="tarif-name">{{ tariff.name }}</span>
+      </div>
+      <div class="tariff-col" mat-col-md="5">
+        <mat-icon>arrow_downward</mat-icon>
+        {{ tariff.downloadSpeed }}
+        -
+        <mat-icon>arrow_upward</mat-icon>
+        {{ tariff.uploadSpeed }}
+      </div>
+      <div
+        class="tariff-col"
+        *ngIf="tariff.benefits.length > 0"
+        mat-col-md="3"
+        hidden-xs
+        hidden-sm
+      >
+        <h4>Benefits:</h4>
+        <ul>
+          <li *ngFor="let benefit of tariff.benefits">{{ benefit }}</li>
+        </ul>
+      </div>
+      <div class="tariff-col" mat-col-md="2">
+        <span class="price">€ {{ tariff.price }}</span>
+      </div>
+      <div class="tariff-col" mat-col-md="2">
+        <button mat-raised-button color="primary">Go to Tariff</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="no-results" *ngIf="tariffs.length === 0">
+    <p>No tariffs found.</p>
+  </div>
+</div>

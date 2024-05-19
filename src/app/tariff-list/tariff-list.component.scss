@@ -1,0 +1,49 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .tariff-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .tariff-row {
+    display: flex;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .tariff-col {
+    padding: 10px;
+  }
+  
+  .tarif-name {
+    font-weight: bold;
+  }
+  
+  .benefits {
+    margin-top: 10px;
+  }
+  
+  .price {
+    font-weight: bold;
+  }
+  
+  .no-results {
+    text-align: center;
+  }
+
+  @media (max-width: 992px) {
+    .tariff-col[hidden-xs] {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .tariff-col[hidden-sm] {
+      display: none;
+    }
+  }
